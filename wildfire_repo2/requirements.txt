@@ -18,4 +18,5 @@ scipy
 networkx 
 shapely
 geopandas
+osmnx==1.9.4
 
