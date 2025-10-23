@@ -1,2 +1,17 @@
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 || pip install torch torchvision torchaudio
-pip install numpy pandas scikit-learn matplotlib tqdm pyyaml opencv-python pillow
+# requirements.txt
+
+# PyTorch (CUDA 12.1 compatible)
+torch
+torchvision
+torchaudio
+
+# Core libraries
+numpy
+pandas
+scikit-learn
+matplotlib
+tqdm
+pyyaml
+opencv-python
+pillow
+
