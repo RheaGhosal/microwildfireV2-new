@@ -1,0 +1,105 @@
+# Real-Time Micro-Wildfire Prediction and Evacuation Planning
+### AI-driven multimodal fusion for early wildfire risk forecasting
+
+---
+
+##  Overview
+This repository implements the multimodal wildfire prediction framework described in  
+**"AI-Driven Micro-Wildfire Prediction and Evacuation Planning Using Multimodal Data Fusion."**
+
+It integrates:
+- **Satellite imagery (CNN)** for spatial ignition features  
+- **Sequential weather data (LSTM)** for temporal patterns  
+- **Tabular meteorological variables (RF/XGBoost)**  
+- **Weighted / stacked fusion** for ensemble forecasting  
+- **Fairness & calibration metrics** for ethical deployment  
+- **Edge-ready TensorFlow Lite deployment**  
+
+---
+
+##  Repository Structure
+├── data/ # CSV, imagery, and sensor data 
+├── images/ # Generated figures and plots
+├── models/ # Saved CNN/LSTM/RF/TFLite models
+├── scripts/
+│ ├── train_cnn.py
+│ ├── train_lstm.py
+│ ├── train_rf.py
+│ ├── fuse_models.py
+│ ├── roc_curve_com_plot.py
+│ ├── region_accuracy_plot.py
+│ └── utils.py
+├── configs/
+│ └── config.yaml
+├── results/
+│ ├── fusion_results.json
+│ ├── bootstrap_ci.json
+│ └── fusion_table.csv
+├── requirements.txt
+└── README.md
+
+
+
+---
+
+##  Installation
+
+1. **Clone the repository and install required packages**
+   git clone https://github.com/RheaGhosal/microwildfireV2-new.git
+   cd microwildfireV2-new/wildfire_repo2
+   pip install -r requirements.txt
+
+2. **Running Experiments**
+️ Train individual models
+python scripts/train_cnn.py
+python scripts/train_lstm.py
+python scripts/train_rf.py
+Each script supports resume on restart (checkpointing enabled):
+
+Fuse model outputs
+
+Combine CNN + RF predictions for improved AUROC and calibration:
+
+Outputs:
+
+fusion_results.json (metrics)
+
+fusion_table.csv (aggregated performance)
+
+
+3. **Generate visualizations**
+ROC Curves - 
+python scripts/roc_curve_com_plot.py
+Generates images/roc_curve_comparison.pdf
+Regional Accuracy Bar Chart
+python scripts/region_accuracy_plot.py
+Generates images/region_accuracy.pdf
+Model AUROC Histogram
+python scripts/model_accuracy_comparison.py
+
+Generates images/model_accuracy_comparison.pdf
+
+
+4. ** Reproduce Results Table **
+python scripts/compute_bootstrap_ci.py
+Recomputes 95% bootstrap confidence intervals for AUROC, Brier, and ECE
+ outputs to results/bootstrap_ci.json
+
+Expected Outputs
+Model	AUROC   (95% CI)	  Brier	ECE
+CNN	   0.898 [0.842–0.944]	0.236	0.060
+LSTM	 0.774 [0.691–0.850]	0.258	0.092
+RF	   0.894 [0.834–0.942]	0.241	0.064
+Fusion 0.923 [0.873–0.961]	0.233	0.058
+(CNN+RF)
+
+
+**References**
+
+If you use this code, please cite:
+
+R. Ghosal, AI-Driven Micro-Wildfire Prediction and Evacuation Planning Using Multimodal Data Fusion, IEEE Access, 2025.
+
+**Contact**
+grhea1008@gmail.com
+
