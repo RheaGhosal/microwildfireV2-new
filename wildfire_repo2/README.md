@@ -85,6 +85,32 @@ python scripts/compute_bootstrap_ci.py
 Recomputes 95% bootstrap confidence intervals for AUROC, Brier, and ECE
  outputs to results/bootstrap_ci.json
 
+5. ** Evacuation Routing Overlay **
+
+The repository includes a lightweight module that converts model-predicted ignition risk maps into road-network overlays using [OSMnx](https://github.com/gboeing/osmnx).
+
+**Usage**
+```bash
+python scripts/make_evac_overlay_from_csv.py \
+  --csv data/pred_points.csv --lat-col lat --lon-col lon --prob-col prob \
+  --origin-lat 34.1234 --origin-lon -118.4567 \
+  --dest-lat 34.1567 --dest-lon -118.5012 \
+  --grid-res 0.002 --beta 5.0 \
+  --out-png out/fig_evac_routing_overlay.png \
+  --out-svg out/fig_evac_routing_overlay.svg
+### Evacuation Routing Outputs
+
+- **`out/fig_evac_routing_overlay.png`** — Risk-aware evacuation map *(raster)*
+- **`out/fig_evac_routing_overlay.svg`** — Vector version for publication
+
+The color scale indicates ignition-risk intensity, and the paths balance travel time and predicted exposure through the parameter **β**.
+
+<p align="center">
+  <img src="out/fig_evac_routing_overlay.png" width="70%">
+</p>
+
+
+
 Expected Outputs
 Model	AUROC   (95% CI)	  Brier	ECE
 CNN	   0.898 [0.842–0.944]	0.236	0.060
