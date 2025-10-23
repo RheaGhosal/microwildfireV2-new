@@ -14,4 +14,8 @@ tqdm
 pyyaml
 opencv-python
 pillow
+scipy 
+networkx 
+shapely
+geopandas
 
